@@ -1,0 +1,226 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+:root {
+    --main-transition : 0.3s;
+    /* --failur-color: # */
+    --borderRadius:8px ;
+}
+body {
+    font-family: Helvetica, sans-serif;
+    background:#f7f7f8;
+}
+.container {
+    padding: 30px;
+}
+.container .title {
+    width: 650px;
+    margin: 0 auto;
+    text-align: center;
+}
+.title h1 {
+    font-weight: bold;
+    text-transform: capitalize;
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+.title p {
+    color: #777;
+    margin: 0 30px;
+    line-height: 1.5;
+}
+.cards-box {
+    margin: 60px 0;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.cards-box .card {
+    background-color: #fff;
+    width: calc((100% - 40px) / 3 );
+    box-shadow: 0 5px 20px rgba(0,0,0,.12);
+    padding: 20px;
+    border-radius: var(--borderRadius);
+    align-self: flex-start;
+    .card-head {
+        display: flex;
+        margin-bottom: 20px;
+    }
+}
+.card .card-head{
+    & > i{
+        font-size: 40px;
+        padding: 5px;
+        margin-right: 5px;
+        color: #fff;
+        background:linear-gradient(90deg,green, blue) ;
+        border-radius: 15px;
+        line-height: 40px;
+    }
+    h2 {
+        text-transform: capitalize; 
+        font-weight: normal;
+        i {
+            font-size: 18px;
+        }
+        span {
+            font-size: 14px;
+            font-weight: normal;
+            color: #333;
+            text-transform: lowercase;
+        }
+    }
+}
+.cards-box .assignment {
+    margin: 20px 0;
+    padding: 15px;
+    border-left:3px solid #6cE73c ;
+    background-color:  #2e5220;
+    border-radius: var(--borderRadius);
+    h3 {
+        margin-bottom: 10px;
+        font-weight: normal;
+        text-transform: capitalize;
+        i{
+            color:  rgba(79, 236, 79, 0.699);
+            margin-right: 5px;
+        }
+        span {
+            float: right;
+            font-size: 12px;
+            color: #6cE73c;
+        }
+    }
+    .time {
+        display: flex;
+        width: 50%;
+        justify-content: space-between;
+        font-size: 13px;
+        i{
+            font-size: 10px;
+            margin-right: 3px;
+        }
+    }
+}
+.cards-box .card .add-assign {
+    width: 100%;
+    padding:10px;
+    border: 1px dashed gray;
+    border-radius: var(--borderRadius);
+    background-color: #fff;
+    font-size: 15px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: var(--main-transition);
+}
+.cards-box .card .add-assign:hover {
+    background-color: #e0e0e0;
+}
+.container .add-course {
+    width: 240px;
+    padding: 10px 30px;
+    border-radius: var(--borderRadius);
+    font-weight: 900;
+    font-size: 18px;
+    color: #fff;
+    background: linear-gradient(90deg,green, blue);
+    border: 0;
+    outline: 0;
+    margin: 30px calc(50% - 120px);
+    cursor: pointer;
+    transition: var(--main-transition);
+    position: fixed;
+    bottom: 0;
+}
+.container .add-course:hover {
+    transform: scale(1.03);
+}
+
+
+/* Overlay  */
+#overlay {
+    position: fixed;
+    left: 0;
+    top:0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.9);
+    display: none;
+    z-index: 100;
+}
+/* Popups  */
+.add-popup {
+    width: 450px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    background: #fff;
+    padding: 20px;
+    border-radius: var(--borderRadius);
+    z-index: 101;
+    box-shadow: 0 5px 20px rgba(0,0,0,.15);
+    display: none;
+}
+.popup {
+    display: block;
+}
+.add-popup .course-head ,
+.add-popup .assign-head {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+.add-popup label {
+    font-size: 14px;
+    color: #333;
+}
+.add-popup input {
+    height: 43px;
+    width: 100%;
+    font-size: 16px;
+    border-radius: var(--borderRadius);
+    border: 0;
+    padding: 10px;
+    margin: 10px 0 25px;
+    outline: 0;
+    border: 1px solid #ddd;
+}
+.add-popup input:focus {
+    outline:1px solid #000 ;
+}
+.add-popup .btns {
+    display: flex;
+    gap: 10px;
+}
+.add-popup .btns button {
+    padding: 10px 20px;
+    border: 0;
+    border-radius: var(--borderRadius);
+    transition: var(--main-transition);
+    cursor: pointer;
+}
+.add-popup .btns .cancel,
+.add-popup .btns .cancelAS {
+    flex: 1;
+    border: 1px solid #ddd;
+}
+.add-popup .btns .add ,
+.add-popup .btns .assignment-addBtn{
+    flex: 1;
+    background: linear-gradient(90deg,green, blue);
+    cursor: pointer;
+}
+.assignment-popup h2 > i  {
+    background: linear-gradient(135deg,green, blue);
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: var(--borderRadius);
+    color: #fff;
+    font-size: 14px;
+    margin-right: 10px;
+}

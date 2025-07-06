@@ -4,8 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="./Css/style.css">
+    <script src="https://kit.fontawesome.com/3d59e7110b.js" crossorigin="anonymous"></script>
 </head>
 <body>
+    <div id="overlay"></div>
+    <div class="container">
+        <div class="title">
+            <h1>University Assignment Tracker </h1>
+            <p>Keep track of all your course assignment in one organized place. Never miss a deadline again.</p>
+        </div>
+
+        <!-- Course Popup -->
+         <div class="add-popup" id="course-popup">
+                <div id="course-head" class="course-head">
+                    <h2><i class="fa-solid fa-book-open" style="margin-right: 10px;"></i>Add New Course</h2>
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+                <form action="" class="form">
+                    <label for="course-name">Course Name</label>
+                    <input required type="text" id="course-name" placeholder="e.g., Computer Scince Fundamentals">
+                    <label for="semester">Semester</label>
+                    <input required type="text" id="semester" placeholder="e.g., Fall 2025">
+                    <div class="btns">
+                        <button type="button" id="cancel" class="cancel">Cancel</button>
+                        <button type="button" class="add">Add Course</button>
+                    </div>
+                </form>
+         </div>
+
+         <!-- Assignment Popup  -->
+         <div class="add-popup" id="assignment-popup">
+                <div class="assign-head">
+                    <h2><i class="fa-solid fa-plus" style="margin-right: 10px; display: inline-block;"></i>Add New Assignment</h2>
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+                <form action="" class="form-assign">
+                    <label for="assign-name">Assignment Name</label>
+                    <input required type="text" id="assign-name" placeholder="e.g., Computer Scince Fundamentals">
+                    <label for="start-date">Start Date</label>
+                    <input required type="date" id="start-date" >
+                    <label for="end-date">Due Date</label>
+                    <input required type="date" id="end-date">
+                    <div class="btns">
+                        <button class="cancelAS">Cancel</button>
+                        <button class="assignment-addBtn">Add Assignment</button>
+                    </div>
+                </form>
+         </div>
+        <div class="cards-box"></div>
     
+
+        <button class="add-course">+ Add Course</button>
+
+    </div>
+    <script src="./Js/main.js"></script>
 </body>
 </html>
