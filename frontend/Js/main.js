@@ -24,10 +24,25 @@ document.querySelector(".assign-head > i").onclick = _ => cancelAS();
 
 //show course popup
 document.querySelector('.add-course').addEventListener("click",() => showCoursePopup());
-document.querySelector(".add").addEventListener( "click",() => addOneCourse());
+// document.querySelector(".add").addEventListener( "click",() => addOneCourse());
 
 document.querySelector(".assignment-addBtn").addEventListener("click",() => addAssign());
 
+function fetchFn(){
+    fetch('http://127.0.0.1:5000/courses')
+    .then(res => res.json())
+    .then(data => {
+        // console.log('Course:', data[0]['name']);
+        data.forEach(course  => {
+            addOneCourse(course.name,course.semester);
+        });
+    })
+    .catch(err => console.error('Error fetching courses:', err));
+}
+window.onload = () => {
+    addOneCourse();
+    fetchFn();
+}
 
 //functions
 //Create Popup Course Function 
@@ -52,7 +67,7 @@ function cancelAS(){
 }
 // localStorage.clear();
 //add course
-function addOneCourse(){
+function addOneCourse(name,semester){
     if (courseName.value && semster.value) {
         let courseCard = document.createElement("div");
         let testContainer = document.createElement('div');
@@ -63,8 +78,8 @@ function addOneCourse(){
         btn.className = "add-assign";
         courseCard.innerHTML = `
                 <div class="card-head">
-                    <i class="fa-solid fa-book-open"></i>
-                    <h2>${courseName.value}<br><i style="margin-right:10px;" class="fa-regular fa-calendar"></i><span>${semster.value}</span></h2>
+                    <i class=a"fa-solid fa-book-open"></i>
+                    <h2>${name}<br><i style="margin-right:10px;" class="fa-regular fa-calendar"></i><span>${semester}</span></h2>
                 </div>
         `;
         courseCard.appendChild(testContainer);
