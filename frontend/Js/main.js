@@ -53,7 +53,6 @@ function cancelAS(){
 // localStorage.clear();
 //add course
 function addOneCourse(){
-    courseName.focus();
     if (courseName.value && semster.value) {
         let courseCard = document.createElement("div");
         let testContainer = document.createElement('div');
@@ -69,10 +68,10 @@ function addOneCourse(){
                 </div>
         `;
         courseCard.appendChild(testContainer);
-        // btn.addEventListener("click", () => {
-        //     currentCard = courseCard;
-        //     showAssignPopup();
-        // })
+        btn.addEventListener("click", () => {
+            currentCard = courseCard;
+            showAssignPopup();
+        })
         courseCard.appendChild(btn);
         cardsContaier.appendChild(courseCard);
     }
@@ -88,18 +87,6 @@ document.addEventListener("click",(e)=> {
         addAssignPopUp.style.display = 'block';
     }
 });
-
-// let currentCourseCard = null;
-
-
-// document.addEventListener("click", (e) => {
-//     if (e.target.className == "add-assign") {
-//         currentCourseCard = e.target.closest(".card"); // store the card being assigned
-//         overlay.style.display = "block";
-//         addAssignPopUp.style.display = 'block';
-//     }
-// });
-
 
 //add assignment 
 function addAssign() {
@@ -134,19 +121,28 @@ function addAssign() {
     saveData(); 
 }
 
-    
-
-
-
-
-
 function saveData(){
     localStorage.setItem('data',cardsContaier.innerHTML)
 }
 
 function showTask() {
-    cardsContaier.innerHTML = localStorage.getItem('data');
-    
+    let savedData = localStorage.getItem('data');
+    if (savedData) {
+        cardsContaier.innerHTML = savedData;
+        rebindAssignButtons(); 
+    }
 }
 
+
+function rebindAssignButtons() {
+    document.querySelectorAll('.add-assign').forEach(btn => {
+        btn.addEventListener("click", () => {
+            currentCard = btn.closest(".card");
+            showAssignPopup();
+        });
+    });
+}
+
+
 showTask();
+rebindAssignButtons();
