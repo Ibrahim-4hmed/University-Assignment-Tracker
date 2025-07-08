@@ -22,15 +22,44 @@ document.querySelector(".cancel").onclick = _ => cancel();
 document.querySelector(".cancelAS").onclick = _ => cancelAS();
 document.querySelector(".assign-head > i").onclick = _ => cancelAS();
 
+<<<<<<< HEAD
 // Show course popup
 document.querySelector('.add-course').addEventListener("click", () => showCoursePopup());
 document.querySelector(".add").addEventListener("click", () => addOneCourse());
 document.querySelector(".assignment-addBtn").addEventListener("click", () => addAssign());
+=======
+//show course popup
+document.querySelector('.add-course').addEventListener("click",() => showCoursePopup());
+// document.querySelector(".add").addEventListener( "click",() => addOneCourse());
+>>>>>>> 719266891ce434dede008d54bf579c6e9b0e8169
 
 // Functions
 
+<<<<<<< HEAD
 // Create Popup Course Function 
 function showCoursePopup() {
+=======
+function fetchFn(){
+    fetch('http://127.0.0.1:5000/courses')
+    .then(res => res.json())
+    .then(data => {
+        // console.log('Course:', data[0]['name']);
+        data.forEach(course  => {
+            addOneCourse(course.name,course.semester);
+        });
+    })
+    .catch(err => console.error('Error fetching courses:', err));
+}
+window.onload = () => {
+    addOneCourse();
+    fetchFn();
+}
+
+//functions
+//Create Popup Course Function 
+function showCoursePopup(){
+    // console.log("hello");
+>>>>>>> 719266891ce434dede008d54bf579c6e9b0e8169
     overlay.style.display = "block";
     addCoursePopUp.style.display = 'block';
 }
@@ -50,9 +79,15 @@ function cancelAS() {
     addAssignPopUp.style.display = 'none';
     overlay.style.display = "none";
 }
+<<<<<<< HEAD
 
 // Add course
 function addOneCourse() {
+=======
+// localStorage.clear();
+//add course
+function addOneCourse(name,semester){
+>>>>>>> 719266891ce434dede008d54bf579c6e9b0e8169
     if (courseName.value && semster.value) {
         let courseCard = document.createElement("div");
         let testContainer = document.createElement('div');
@@ -62,10 +97,17 @@ function addOneCourse() {
         btn.innerHTML = '+ Add Assignment';
         btn.className = "add-assign";
         courseCard.innerHTML = `
+<<<<<<< HEAD
             <div class="card-head">
                 <i class="fa-solid fa-book-open"></i>
                 <h2>${courseName.value}<br><i style="margin-right:10px;" class="fa-regular fa-calendar"></i><span>${semster.value}</span></h2>
             </div>
+=======
+                <div class="card-head">
+                    <i class=a"fa-solid fa-book-open"></i>
+                    <h2>${name}<br><i style="margin-right:10px;" class="fa-regular fa-calendar"></i><span>${semester}</span></h2>
+                </div>
+>>>>>>> 719266891ce434dede008d54bf579c6e9b0e8169
         `;
         courseCard.appendChild(testContainer);
         btn.addEventListener("click", () => {
